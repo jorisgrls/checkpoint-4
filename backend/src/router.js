@@ -2,12 +2,18 @@ const express = require("express");
 
 const router = express.Router();
 
-const itemControllers = require("./controllers/itemControllers");
+const annoncesControllers = require("./controllers/annoncesControllers");
+const typeEnergieControllers = require("./controllers/typeEnergieControllers");
+const typeLogementControllers = require("./controllers/typeLogementControllers");
 
-router.get("/items", itemControllers.browse);
-router.get("/items/:id", itemControllers.read);
-router.put("/items/:id", itemControllers.edit);
-router.post("/items", itemControllers.add);
-router.delete("/items/:id", itemControllers.destroy);
+router.get("/annonces", annoncesControllers.browse);
+router.get("/annonces/:id", annoncesControllers.browseById);
+router.post("/annonces", annoncesControllers.postAnnonce);
+router.put("/annonces/:id", annoncesControllers.updateAnnonce);
+router.delete("/annonces/:id", annoncesControllers.deleteById);
+
+router.get("/energies", typeEnergieControllers.browse);
+
+router.get("/types", typeLogementControllers.browse);
 
 module.exports = router;
