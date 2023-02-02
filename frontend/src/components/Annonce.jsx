@@ -2,21 +2,30 @@
 import { CircleStackIcon, HomeModernIcon } from "@heroicons/react/24/outline";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import useDeleteAnnonce from "../hooks/annonces/useDeleteAnnonce";
+import useGetFlag from "../hooks/annonces/useGetFlag";
+import DeleteAnnonceConfirm from "./DeleteAnnonceConfirm";
 import OverlayUpdate from "./OverlayUpdate";
 
 function Annonce({ data }) {
+  const { isLoading, isError, data: flag } = useGetFlag();
   const [openUpdate, setOpenUpdate] = useState(false);
-  const { mutate: deleteAnnonce } = useDeleteAnnonce();
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
   const handleDeleteAnnonce = () => {
-    deleteAnnonce(data.id);
+    setShowDeleteModal(true);
   };
   const handleUpdateAnnonce = () => {
     setOpenUpdate(true);
   };
 
+  const handleCloseModal = () => setShowDeleteModal(false);
+
   return (
     <>
+      <DeleteAnnonceConfirm
+        showDeleteModal={showDeleteModal}
+        onCloseModal={handleCloseModal}
+        id={data.id}
+      />
       <OverlayUpdate open={openUpdate} setOpen={setOpenUpdate} data={data} />
       <div className="w-full flex flex-col md:flex-row gap-8 bg-white rounded-md shadow-md p-8 hover:shadow-lg my-6 items-center md:items-start">
         <Link to={`/annonces/${data.id}`}>
@@ -30,6 +39,13 @@ function Annonce({ data }) {
           <div className="flex flex-col gap-8 my-auto items-center md:items-start">
             <div className="flex flex-col gap-2">
               <div className="flex gap-2 items-center">
+                {!isLoading && !isError && (
+                  <img
+                    src={flag[0].flags.png}
+                    alt="drapeau"
+                    className="w-6 h-6 rounded-full"
+                  />
+                )}
                 <h1 className="uppercase font-semibold text-xl">
                   {data.ville} -{" "}
                 </h1>
@@ -54,7 +70,7 @@ function Annonce({ data }) {
               </p>
             </div>
           </div>
-          <div className="my-auto flex flex-col gap-4 mt-8">
+          <div className="my-auto flex flex-col gap-4 mt-8 md:my-auto">
             <button
               type="button"
               className="inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"

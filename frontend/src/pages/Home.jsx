@@ -2,11 +2,12 @@ import { InformationCircleIcon } from "@heroicons/react/24/outline";
 import React from "react";
 import Annonce from "../components/Annonce";
 import useGetAnnonces from "../hooks/annonces/useGetAnnonces";
+import SkeletonAnnonce from "../components/SkeletonAnnonce";
 
 function Home() {
   const { isLoading, isError, data } = useGetAnnonces();
   if (isLoading) {
-    return <div>Chargement des annonces</div>;
+    return <SkeletonAnnonce />;
   }
   if (isError) {
     return <div>Erreur lors du chargement des annonces</div>;

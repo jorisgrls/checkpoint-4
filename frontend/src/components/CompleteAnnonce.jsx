@@ -9,19 +9,20 @@ import {
 import useGetAnnonceById from "../hooks/annonces/useGetAnnonceById";
 import getGes from "../services/getGes";
 import getDpe from "../services/getDpe";
+import SkeletonAnnonce from "./SkeletonAnnonce";
 
 function CompleteAnnonce({ id }) {
   const [openDropdownPrice, setOpenDropdownPrice] = useState(false);
   const { isLoading, isError, data } = useGetAnnonceById(id);
   if (isLoading) {
-    return <div>Chargement de l'annonce</div>;
+    return <SkeletonAnnonce />;
   }
   if (isError) {
     return <div>Erreur lors du chargement</div>;
   }
   return (
     <div className="w-full flex flex-col gap-8 bg-white rounded-md shadow-md p-8 mb-10">
-      <div className="flex gap-8">
+      <div className="flex flex-col md:flex-row  gap-8">
         <img
           src={data[0].url_image}
           alt={data[0].titre}
@@ -77,13 +78,13 @@ function CompleteAnnonce({ id }) {
           <p>Facture d'énergie estimée :</p>
           <p>{data[0].prix_energie} €</p>
         </div>
-        <div className="flex gap-4 mt-4">
+        <div className="flex gap-4 mt-4 flex-wrap md:flex-nowrap">
           <div>
             <span className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-green-100 text-green-800">
               {data[0].nom_type_logement}
             </span>
           </div>
-          <div className="w-full flex justify-between">
+          <div className="w-full flex justify-between flex-wrap">
             <div className="flex gap-12">
               <div className="flex gap-2">
                 <CircleStackIcon className="w-6 h-6" />

@@ -2,7 +2,7 @@
 /* This example requires Tailwind CSS v2.0+ */
 import React, { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { XMarkIcon } from "@heroicons/react/24/outline";
+import { PencilSquareIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import useGetTypeLogement from "../hooks/type_logement/useGetTypeLogement";
 import useGetTypeEnergie from "../hooks/type_energie/useGetTypeEnergie";
 import usePostAnnonce from "../hooks/annonces/usePostAnnonce";
@@ -105,7 +105,8 @@ function Overlay({ open, setOpen }) {
                   <div className="flex min-h-0 flex-1 flex-col overflow-y-scroll py-6">
                     <div className="px-4 sm:px-6">
                       <div className="flex items-start justify-between">
-                        <Dialog.Title className="text-lg font-medium text-gray-900">
+                        <Dialog.Title className="text-lg font-bold text-gray-900 flex gap-2">
+                          <PencilSquareIcon className="w-6 h-6 font-bold" />
                           Publier une annonce
                         </Dialog.Title>
                         <div className="ml-3 flex h-7 items-center">
