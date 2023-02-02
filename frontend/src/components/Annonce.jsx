@@ -3,6 +3,8 @@ import {
   BuildingOfficeIcon,
   CircleStackIcon,
   HomeModernIcon,
+  PencilSquareIcon,
+  TrashIcon,
 } from "@heroicons/react/24/outline";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
@@ -82,16 +84,18 @@ function Annonce({ data }) {
           <div className="my-auto flex flex-col gap-4 mt-8 md:my-auto">
             <button
               type="button"
-              className="inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
+              className="inline-flex gap-2 justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-yellow-500 hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-400"
               onClick={handleUpdateAnnonce}
             >
+              <PencilSquareIcon className="h-5 w-5" />
               Modifier l'annonce
             </button>
             <button
               type="button"
-              className="inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+              className="inline-flex gap-2 justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
               onClick={handleDeleteAnnonce}
             >
+              <TrashIcon className="h-5 w-5" />
               Supprimer l'annonce
             </button>
           </div>

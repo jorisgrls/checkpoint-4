@@ -14,6 +14,9 @@ function Home() {
   }
   return (
     <div className="mt-6">
+      <p className="text-xl font-semibold pt-6">
+        Liste des locations disponibles ({data.length})
+      </p>
       {data.length > 0 ? (
         data.map((annonce) => <Annonce key={annonce.id} data={annonce} />)
       ) : (
