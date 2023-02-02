@@ -44,7 +44,7 @@ function Annonce({ data }) {
           <div className="flex flex-col gap-8 my-auto items-center md:items-start">
             <div className="flex flex-col gap-2">
               <div className="flex gap-2 items-center">
-                {!isLoading && !isError && flag.length > 0 && (
+                {!isLoading && !isError && flag.length === 1 && (
                   <img
                     src={flag[0].flags.png}
                     alt="drapeau"
