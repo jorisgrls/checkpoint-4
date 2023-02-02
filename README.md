@@ -41,7 +41,7 @@ Le tout avec des appels maîtrisés grâce à React query !
 # Utilisation d'une API externe
 <ul>
   <li>API utilisée : https://restcountries.com</li>
-  <li>Affichage du drapeau du pays de l'annonce (actuellement site prévu pour la france)</li>
+  <li>Affichage du drapeau du pays de l'annonce</li>
 </ul>
 
 
