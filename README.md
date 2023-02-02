@@ -11,7 +11,7 @@ Technologies utilisés : ReactJS - Express - Tailwind - React query
 
 - Clone with `git clone https://github.com/jorisgrls/checkpoint-4.git`
 - Setup with `npm run setup`
-- Create de DB with `npm run migrate`
+- Create DB with `npm run migrate`
 - Run with `npm run dev`
 
 
