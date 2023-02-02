@@ -35,6 +35,8 @@ Technologies utilisés : ReactJS - Express - Tailwind - React query
   <li>Delete d'une annonce : possibilité de supprimer une annonce (modale de confirmation de suppression)</li>
 </ul>
 
+Le tout avec des appels maîtrisés grâce à React query !
+
 # Utilisation d'une API externe
 <ul>
   <li>API utilisée : https://restcountries.com</li>
