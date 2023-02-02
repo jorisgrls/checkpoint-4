@@ -1,35 +1,48 @@
 ## Concept
 
-This template is meant to serve as a foundation for every P2/P3 following the React-Express-MySQL stack, as learned in Wild Code School.
-It's pre-configured with a set of tools which'll help students produce industry-quality and easier-to-maintain code, while staying as simple as possible to use.
+Checkpoint 4 :
+Site de gestion de biens immobiliers : possibilité de créer une annonce, la modifier et la supprimer.
 
-## Setup & Use
+Technologies utilisés : ReactJS - Express - Tailwind - React query
 
-### Project Initialization
+## Mise en place et utilisation
 
-- In VSCode, install plugins **Prettier - Code formatter** and **ESLint** and configure them
-- Clone this repo, enter it
-- Run command `npm run setup`
-- _NB: To launch the backend server, you'll need an environment file with database credentials. You'll find a template one in `backend/.env.sample`_
+### Installation du projet
 
-### Available Commands
+- Clone with `git clone https://github.com/jorisgrls/checkpoint-4.git`
+- Setup with `npm run setup`
+- Create de DB with `npm run migrate`
+- Run with `npm run dev`
 
-- `setup` : Initialization of frontend and backend, as well as all toolings
-- `migrate` : Run the database migration script
-- `dev` : Starts both servers (frontend + backend) in one terminal
-- `dev-front` : Starts the React frontend server
-- `dev-back` : Starts the Express backend server
-- `lint` : Runs validation tools, and refuses unclean code (will be executed on every _commit_)
-- `fix` : Fixes linter errors (run it if `lint` growls on your code !)
 
-## FAQ
+## Création du site
 
-### Tools
+## Maquette et modélisation
 
-- _Concurrently_ : Allows for several commands to run concurrently in the same CLI
-- _Husky_ : Allows to execute specific commands that trigger on _git_ events
-- _Vite_ : Alternative to _Create-React-App_, packaging less tools for a more fluid experience
-- _ESLint_ : "Quality of code" tool, ensures chosen rules will be enforced
-- _Prettier_ : "Quality of code" tool as well, focuses on the styleguide
-- _ Airbnb Standard_ : One of the most known "standards", even though it's not officially linked to ES/JS
-- _Nodemon_ : Allows to restart the server everytime a .js file is udated
+<img src="https://i.postimg.cc/TPQC1cyG/IMG-2305.jpg" alt="maquette">
+
+<img src="https://i.postimg.cc/tgH4JhKr/Capture-d-e-cran-2023-02-02-a-09-38-44.png" alt="miro">
+
+<img src="https://i.postimg.cc/tCpT9tH2/Capture-d-e-cran-2023-02-02-a-09-40-34.png" alt="modelisation_bdd">
+
+
+## Fonctionnalités
+
+# Site fullstack avec CRUD
+<ul>
+  <li>Création d'une annonce : ouverture d'un overlay pour rentrer les informations de son bien (notamment le type de bien (possibilité de gérer dans la bdd) et le type d'energie (possibilité de gérer dans la bdd))</li>
+  <li>Read d'une annonce : affichage des annonces disponibles, affichage des types de bien, affichage des types d'énergie, affichage du DPE et GES (l'utilisateur rentre une valeur en kWh et on l'affichage sous forme d'étiquette énergie (A,B,...) avec une couleur adéquate), affichage d'un skeleton pendant le chargement des données</li>
+  <li>Update d'une annonce : ouverture d'un overlay pour modifier l'annonce</li>
+  <li>Delete d'une annonce : possibilité de supprimer une annonce (modale de confirmation de suppression)</li>
+</ul>
+
+Le tout avec des appels maîtrisés grâce à React query !
+
+# Utilisation d'une API externe
+<ul>
+  <li>API utilisée : https://restcountries.com</li>
+  <li>Affichage du drapeau du pays de l'annonce (actuellement site prévu pour la france)</li>
+</ul>
+
+
+
