@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Annonces from "./pages/Annonces";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/annonces/:id" element={<Annonces />} />
         </Route>
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
