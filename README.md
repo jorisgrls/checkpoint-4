@@ -30,7 +30,7 @@ Technologies utilisés : ReactJS - Express - Tailwind - React query
 # Site fullstack avec CRUD
 <ul>
   <li>Création d'une annonce : ouverture d'un overlay pour rentrer les informations de son bien (notamment le type de bien (possibilité de gérer dans la bdd) et le type d'energie (possibilité de gérer dans la bdd))</li>
-  <li>Read d'une annonce : affichage des annonces disponibles, affichage des types de bien, affichage des types d'énergie</li>
+  <li>Read d'une annonce : affichage des annonces disponibles, affichage des types de bien, affichage des types d'énergie, affichage du DPE et GES (l'utilisateur rentre une valeur en kWh et on l'affichage sous forme d'étiquette énergie (A,B,...) avec une couleur adéquate)</li>
   <li>Update d'une annonce : ouverture d'un overlay pour modifier l'annonce</li>
   <li>Delete d'une annonce : possibilité de supprimer une annonce (modale de confirmation de suppression)</li>
 </ul>
