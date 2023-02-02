@@ -1,5 +1,9 @@
 /* eslint-disable react/prop-types */
-import { CircleStackIcon, HomeModernIcon } from "@heroicons/react/24/outline";
+import {
+  BuildingOfficeIcon,
+  CircleStackIcon,
+  HomeModernIcon,
+} from "@heroicons/react/24/outline";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import useGetFlag from "../hooks/annonces/useGetFlag";
@@ -59,7 +63,11 @@ function Annonce({ data }) {
                     </p>
                   </div>
                   <div className="flex gap-2">
-                    <HomeModernIcon className="w-6 h-6" />
+                    {data.id_type === 1 ? (
+                      <BuildingOfficeIcon className="w-6 h-6" />
+                    ) : (
+                      <HomeModernIcon className="w-6 h-6" />
+                    )}
                     <p>{data.surface} m2</p>
                   </div>
                 </div>
@@ -67,7 +75,7 @@ function Annonce({ data }) {
             </div>
             <div>
               <p className="font-semibold text-2xl">
-                Loyer : {data.prix_hc + data.prix_charges} €
+                Loyer : {data.prix_hc + data.prix_charges} €/mois
               </p>
             </div>
           </div>

@@ -293,7 +293,9 @@ function OverlayUpdate({ open, setOpen, data }) {
                                   })
                                 }
                               >
-                                <option value="">Sélectionner un type</option>
+                                <option value="" disabled>
+                                  Sélectionner un type
+                                </option>
                                 {typesLogement.map((type) => (
                                   <option key={type.id} value={type.id}>
                                     {type.nom}
@@ -322,7 +324,9 @@ function OverlayUpdate({ open, setOpen, data }) {
                                   })
                                 }
                               >
-                                <option value="">Sélectionner un type</option>
+                                <option value="" disabled>
+                                  Sélectionner un type
+                                </option>
                                 {typesEnergie.map((type) => (
                                   <option value={type.id} key={type.id}>
                                     {type.nom}
