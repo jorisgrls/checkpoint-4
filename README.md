@@ -24,10 +24,6 @@ Technologies utilisés : ReactJS - Express - Tailwind - React query
 
 <img src="https://i.postimg.cc/tCpT9tH2/Capture-d-e-cran-2023-02-02-a-09-40-34.png" alt="modelisation_bdd">
 
-## Maquette et modélisation
-
-
-
 
 ## Fonctionnalités
 
