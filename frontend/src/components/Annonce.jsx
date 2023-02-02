@@ -7,7 +7,7 @@ import DeleteAnnonceConfirm from "./DeleteAnnonceConfirm";
 import OverlayUpdate from "./OverlayUpdate";
 
 function Annonce({ data }) {
-  const { isLoading, isError, data: flag } = useGetFlag();
+  const { isLoading, isError, data: flag } = useGetFlag(data.pays);
   const [openUpdate, setOpenUpdate] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const handleDeleteAnnonce = () => {
@@ -18,7 +18,6 @@ function Annonce({ data }) {
   };
 
   const handleCloseModal = () => setShowDeleteModal(false);
-
   return (
     <>
       <DeleteAnnonceConfirm
@@ -39,7 +38,7 @@ function Annonce({ data }) {
           <div className="flex flex-col gap-8 my-auto items-center md:items-start">
             <div className="flex flex-col gap-2">
               <div className="flex gap-2 items-center">
-                {!isLoading && !isError && (
+                {!isLoading && !isError && flag.length > 0 && (
                   <img
                     src={flag[0].flags.png}
                     alt="drapeau"
@@ -55,7 +54,9 @@ function Annonce({ data }) {
                 <div className="flex gap-4">
                   <div className="flex gap-2">
                     <CircleStackIcon className="w-6 h-6" />
-                    <p>{data.nb_pieces} pièces</p>
+                    <p>
+                      {data.nb_pieces} {data.nb_pieces > 1 ? "pièces" : "pièce"}
+                    </p>
                   </div>
                   <div className="flex gap-2">
                     <HomeModernIcon className="w-6 h-6" />

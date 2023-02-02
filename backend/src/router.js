@@ -17,6 +17,6 @@ router.get("/energies", typeEnergieControllers.browse);
 
 router.get("/types", typeLogementControllers.browse);
 
-router.get("/flag", flagControllers.browse);
+router.get("/flag/:id", flagControllers.browse);
 
 module.exports = router;

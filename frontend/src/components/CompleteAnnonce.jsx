@@ -88,7 +88,10 @@ function CompleteAnnonce({ id }) {
             <div className="flex gap-12">
               <div className="flex gap-2">
                 <CircleStackIcon className="w-6 h-6" />
-                <p>{data[0].nb_pieces} pièces</p>
+                <p>
+                  {data[0].nb_pieces}{" "}
+                  {data[0].nb_pieces > 1 ? "pièces" : "pièce"}
+                </p>
               </div>
               <div className="flex gap-2">
                 <HomeModernIcon className="w-6 h-6" />

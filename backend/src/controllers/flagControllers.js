@@ -2,9 +2,9 @@ const axios = require("axios");
 
 const browse = (req, res) => {
   axios
-    .get("https://restcountries.com/v2/name/france")
+    .get(`https://restcountries.com/v2/name/${req.params.id}`)
     .then((response) => res.json(response.data))
-    .catch((err) => res.secn(err));
+    .catch(() => res.json([]));
 };
 
 module.exports = {

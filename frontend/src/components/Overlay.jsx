@@ -46,16 +46,17 @@ function Overlay({ open, setOpen }) {
       titre: annonceInfo.titre,
       url_image: annonceInfo.url_image,
       description: annonceInfo.description,
-      id_type: parseInt(annonceInfo.id_type, 10),
-      id_type_energie: parseInt(annonceInfo.id_type_energie, 10),
+      id_type: parseInt(annonceInfo.id_type, 10) || 1,
+      id_type_energie: parseInt(annonceInfo.id_type_energie, 10) || 1,
       prix_hc: parseInt(annonceInfo.prix_hc, 10),
       prix_charges: parseInt(annonceInfo.prix_charges, 10),
       prix_energie: parseInt(annonceInfo.prix_energie, 10),
       nb_pieces: parseInt(annonceInfo.nb_pieces, 10),
       surface: parseInt(annonceInfo.surface, 10),
-      garage: parseInt(annonceInfo.garage, 10),
+      garage: parseInt(annonceInfo.garage, 10) || 1,
       dpe: parseInt(annonceInfo.dpe, 10),
       ges: parseInt(annonceInfo.ges, 10),
+      pays: annonceInfo.pays,
     });
     setOpen(false);
     setAnnonceInfo({
@@ -74,6 +75,7 @@ function Overlay({ open, setOpen }) {
       garage: "",
       dpe: null,
       ges: null,
+      pays: "",
     });
   };
 
@@ -176,6 +178,30 @@ function Overlay({ open, setOpen }) {
                           </div>
                         </div>
                       </div>
+                      <div className="w-full mt-2">
+                        <label
+                          htmlFor="pays"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          Pays (en anglais)
+                        </label>
+                        <div className="mt-1">
+                          <input
+                            type="text"
+                            name="codePostal"
+                            id="codePostal"
+                            className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                            required
+                            value={annonceInfo.pays}
+                            onChange={(e) =>
+                              setAnnonceInfo({
+                                ...annonceInfo,
+                                pays: e.target.value,
+                              })
+                            }
+                          />
+                        </div>
+                      </div>
                       <p className="font-semibold border-b border-gray-200 pb-2 mb-6 mt-10">
                         Information de l'annonce
                       </p>
@@ -274,7 +300,6 @@ function Overlay({ open, setOpen }) {
                                   })
                                 }
                               >
-                                <option value="">Sélectionner un type</option>
                                 {typesLogement.map((type) => (
                                   <option key={type.id} value={type.id}>
                                     {type.nom}
@@ -303,7 +328,6 @@ function Overlay({ open, setOpen }) {
                                   })
                                 }
                               >
-                                <option value="">Sélectionner un type</option>
                                 {typesEnergie.map((type) => (
                                   <option value={type.id} key={type.id}>
                                     {type.nom}

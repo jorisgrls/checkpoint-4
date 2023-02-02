@@ -3,5 +3,5 @@ export default {
   ANNONCE: (id) => `annonce_${id}`,
   LOGEMENTS: "type_logements",
   ENERGIES: "type_energies",
-  FLAG: "flag",
+  FLAG: (country) => `flag_${country}`,
 };

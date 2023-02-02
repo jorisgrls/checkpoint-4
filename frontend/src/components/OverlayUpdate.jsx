@@ -1,12 +1,15 @@
 /* eslint-disable react/prop-types */
 import React, { Fragment, useState } from "react";
+import { useQueryClient } from "react-query";
 import { Dialog, Transition } from "@headlessui/react";
 import { PencilSquareIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import useGetTypeLogement from "../hooks/type_logement/useGetTypeLogement";
 import useGetTypeEnergie from "../hooks/type_energie/useGetTypeEnergie";
 import useUpdateAnnonce from "../hooks/annonces/useUpdateAnnonce";
+import queryKeys from "../constants/queryKeys";
 
 function OverlayUpdate({ open, setOpen, data }) {
+  const queryClient = useQueryClient();
   const { mutate: updateAnnonce } = useUpdateAnnonce();
   const [annonceInfo, setAnnonceInfo] = useState({
     id: data.id,
@@ -25,6 +28,7 @@ function OverlayUpdate({ open, setOpen, data }) {
     garage: data.garage,
     dpe: data.dpe,
     ges: data.ges,
+    pays: data.pays,
   });
 
   const {
@@ -40,24 +44,31 @@ function OverlayUpdate({ open, setOpen, data }) {
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
-    updateAnnonce({
-      id: annonceInfo.id,
-      code_postal: annonceInfo.code_postal,
-      ville: annonceInfo.ville,
-      titre: annonceInfo.titre,
-      url_image: annonceInfo.url_image,
-      description: annonceInfo.description,
-      id_type: parseInt(annonceInfo.id_type, 10),
-      id_type_energie: parseInt(annonceInfo.id_type_energie, 10),
-      prix_hc: parseInt(annonceInfo.prix_hc, 10),
-      prix_charges: parseInt(annonceInfo.prix_charges, 10),
-      prix_energie: parseInt(annonceInfo.prix_energie, 10),
-      nb_pieces: parseInt(annonceInfo.nb_pieces, 10),
-      surface: parseInt(annonceInfo.surface, 10),
-      garage: parseInt(annonceInfo.garage, 10),
-      dpe: parseInt(annonceInfo.dpe, 10),
-      ges: parseInt(annonceInfo.ges, 10),
-    });
+    updateAnnonce(
+      {
+        id: annonceInfo.id,
+        code_postal: annonceInfo.code_postal,
+        ville: annonceInfo.ville,
+        titre: annonceInfo.titre,
+        url_image: annonceInfo.url_image,
+        description: annonceInfo.description,
+        id_type: parseInt(annonceInfo.id_type, 10),
+        id_type_energie: parseInt(annonceInfo.id_type_energie, 10),
+        prix_hc: parseInt(annonceInfo.prix_hc, 10),
+        prix_charges: parseInt(annonceInfo.prix_charges, 10),
+        prix_energie: parseInt(annonceInfo.prix_energie, 10),
+        nb_pieces: parseInt(annonceInfo.nb_pieces, 10),
+        surface: parseInt(annonceInfo.surface, 10),
+        garage: parseInt(annonceInfo.garage, 10),
+        dpe: parseInt(annonceInfo.dpe, 10),
+        ges: parseInt(annonceInfo.ges, 10),
+        pays: annonceInfo.pays,
+      },
+      {
+        onSuccess: () =>
+          queryClient.refetchQueries([queryKeys.ANNONCE(annonceInfo.id)]),
+      }
+    );
     setOpen(false);
   };
 
@@ -158,6 +169,30 @@ function OverlayUpdate({ open, setOpen, data }) {
                               }
                             />
                           </div>
+                        </div>
+                      </div>
+                      <div className="mt-2 w-full">
+                        <label
+                          htmlFor="pays"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          Pays (en anglais)
+                        </label>
+                        <div className="mt-1">
+                          <input
+                            type="text"
+                            name="pays"
+                            id="pays"
+                            className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                            required
+                            value={annonceInfo.pays}
+                            onChange={(e) =>
+                              setAnnonceInfo({
+                                ...annonceInfo,
+                                pays: e.target.value,
+                              })
+                            }
+                          />
                         </div>
                       </div>
                       <p className="font-semibold border-b border-gray-200 pb-2 mb-6 mt-10">

@@ -22,10 +22,6 @@ class AnnoncesManager extends AbstractManager {
         ON annonces.id_type = type_logement.id 
         WHERE ${this.table}.id = ?`,
       [id]
-      //   `SELECT ${this.table}.*, type_energie.nom AS nom_type_energie
-      // FROM annonces
-      // JOIN type_energie
-      // ON annonces.id_type_energie = type_energie.id WHERE ${this.table}.id = ?`,
     );
   }
 
@@ -46,10 +42,11 @@ class AnnoncesManager extends AbstractManager {
       garage,
       dpe,
       ges,
+      pays,
     } = annonce;
     return this.connection.query(
-      `INSERT INTO ${this.table} (url_image, code_postal, ville, titre,description,id_type,prix_hc,prix_charges,prix_energie, id_type_energie, nb_pieces, surface, garage, dpe, ges) 
-      VALUES (?, ?, ?,?, ?, ?,?, ?, ?,?, ?, ?,?, ?, ?)`,
+      `INSERT INTO ${this.table} (url_image, code_postal, ville, titre,description,id_type,prix_hc,prix_charges,prix_energie, id_type_energie, nb_pieces, surface, garage, dpe, ges, pays) 
+      VALUES (?, ?, ?,?, ?, ?,?, ?, ?,?, ?, ?,?, ?, ?, ?)`,
       [
         url_image,
         code_postal,
@@ -66,6 +63,7 @@ class AnnoncesManager extends AbstractManager {
         garage,
         dpe,
         ges,
+        pays,
       ]
     );
   }
@@ -93,6 +91,8 @@ class AnnoncesManager extends AbstractManager {
     annonce.garage && arr.push({ column: "garage", value: annonce.garage });
     annonce.dpe && arr.push({ column: "dpe", value: annonce.dpe });
     annonce.ges && arr.push({ column: "ges", value: annonce.ges });
+    annonce.pays && arr.push({ column: "pays", value: annonce.pays });
+
     const dependencyArray = arr.map(({ value }) => value);
     dependencyArray.push(annonce.id);
     return this.connection.query(

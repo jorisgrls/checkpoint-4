@@ -38,16 +38,23 @@ function Navbar() {
                     </Disclosure.Button>
                   </div>
                   <div className="flex-shrink-0 flex items-center">
-                    <img
-                      className="block lg:hidden h-8 w-auto"
-                      src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                      alt="Workflow"
-                    />
-                    <img
-                      className="hidden lg:block h-8 w-auto"
-                      src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg"
-                      alt="Workflow"
-                    />
+                    <Link to="/">
+                      <img
+                        className="block lg:hidden h-8 w-auto"
+                        src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                        alt="Workflow"
+                      />
+                    </Link>
+                    <Link className="flex gap-2 items-center" to="/">
+                      <img
+                        className="hidden lg:block h-8 w-auto"
+                        src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                        alt="Workflow"
+                      />
+                      <p className="hidden lg:block font-semibold">
+                        New agency
+                      </p>
+                    </Link>
                   </div>
                   <div className="hidden md:ml-6 md:flex md:space-x-8">
                     <Link
